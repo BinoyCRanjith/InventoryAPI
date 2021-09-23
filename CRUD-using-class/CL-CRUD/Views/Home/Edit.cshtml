@@ -1,0 +1,21 @@
+﻿@model Domain.StudentDetails
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+<h3>@ViewBag.Binoy</h3>
+<fieldset>
+    <legend>Edit Student</legend>
+    @using (Html.BeginForm("Create", "Home", FormMethod.Post, new { @class = "form", @id = "form1" }))
+    { 
+        <div class="form-group">
+            <input type="text" name="Name" value="@Model.Name" class="form-control" /><br/>
+
+            <input type="text" name="Age" value="@Model.Age" class="form-control" /><br />
+            <input type="submit" name="" value="Save" class="btn btn-primary" />
+
+        </div>
+    }
+
+    </fieldset>

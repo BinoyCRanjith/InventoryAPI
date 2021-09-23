@@ -1,0 +1,4 @@
+D:\My projects\Vidhya\CRUD-using-class\Entity\bin\Debug\netstandard2.0\Entity.deps.json
+D:\My projects\Vidhya\CRUD-using-class\Entity\bin\Debug\netstandard2.0\Entity.dll
+D:\My projects\Vidhya\CRUD-using-class\Entity\obj\Debug\netstandard2.0\Entity.AssemblyInfoInputs.cache
+D:\My projects\Vidhya\CRUD-using-class\Entity\obj\Debug\netstandard2.0\Entity.AssemblyInfo.cs

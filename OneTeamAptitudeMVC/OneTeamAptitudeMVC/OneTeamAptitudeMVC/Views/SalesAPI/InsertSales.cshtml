@@ -1,0 +1,128 @@
+﻿@model OneTeamAptitudeMVC.Models.SalesDataAPI
+@using (Html.BeginForm("Save", "SalesAPI", FormMethod.Post))
+{
+
+    @Html.HiddenFor(p => p.Id)
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h1>Sales Updation</h1>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                @Html.Label("ProductId :")
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+
+
+                                    @Html.DropDownListFor(p => p.ProductId, new SelectList(ViewBag.ProductList, "Id", "ProductName"), new { @class = "form-control input-lg" })
+
+                                </div>
+                                @Html.ValidationMessageFor(p => p.ProductId, "", new { @class = "text-danger", @required = "", })
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                @Html.Label("SalesQTY :")
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    @Html.TextBoxFor(Model => Model.SalesQTY, new { @class = "form-control", @placeholder = "Type SalesQTY here" })
+
+                                </div>
+                                @Html.ValidationMessageFor(p => p.SalesQTY, "", new { @class = "text-danger", @required = "", })
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                @Html.Label("Price :")
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    @Html.TextBoxFor(Model => Model.Price, new { @class = "form-control", @placeholder = "Price" })
+
+                                </div>
+                                @Html.ValidationMessageFor(p => p.Price, "", new { @class = "text-danger", @required = "", })
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                @Html.Label("TotalPrice :")
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    @Html.TextBoxFor(Model => Model.TotalPrice, new { @class = "form-control", @placeholder = "Type TotalPrice Here" })
+
+                                </div>
+                                @Html.ValidationMessageFor(p => p.TotalPrice, "", new { @class = "text-danger", @required = "", })
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="submit" value="submit" class="btn btn-success" style="padding-top:5px;" />
+
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+            integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
+            crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        // $(document).ready(function () { alert("Haii"); });
+
+        $("#SalesQTY,#Price,#TotalPrice").blur(function () {
+            var sum = $("#SalesQTY").val() * $("#Price").val();
+
+            $("#TotalPrice").val(sum);
+        });
+
+        $("#ProductId").change(function () {
+            
+            $.ajax({
+                async: true,
+                type: "GET",
+                url: "/SalesAPI/InsertProductAjax?Id=" + $("#ProductId").val(),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (Response, ) {
+
+                    console.log(Response)
+                   
+                    var Price = Response.Price;
+                    $("#Price").val(Price);
+                //    console.log(Response)
+
+                },
+
+                error: function (Response) { console.log(Response) }
+
+
+            });
+
+        });
+    </script>
+
+
+}

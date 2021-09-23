@@ -1,0 +1,6 @@
+C:\Users\Binoy Renjith\Desktop\Json Support project Demo\OneTeamAptitudeMVC\OneTeamAptitudeMVC\Oneteam.ViewModel\bin\Debug\Oneteam.ViewModel.dll
+C:\Users\Binoy Renjith\Desktop\Json Support project Demo\OneTeamAptitudeMVC\OneTeamAptitudeMVC\Oneteam.ViewModel\bin\Debug\Oneteam.ViewModel.pdb
+C:\Users\Binoy Renjith\Desktop\Json Support project Demo\OneTeamAptitudeMVC\OneTeamAptitudeMVC\Oneteam.ViewModel\obj\Debug\Oneteam.ViewModel.csproj.AssemblyReference.cache
+C:\Users\Binoy Renjith\Desktop\Json Support project Demo\OneTeamAptitudeMVC\OneTeamAptitudeMVC\Oneteam.ViewModel\obj\Debug\Oneteam.ViewModel.csproj.CoreCompileInputs.cache
+C:\Users\Binoy Renjith\Desktop\Json Support project Demo\OneTeamAptitudeMVC\OneTeamAptitudeMVC\Oneteam.ViewModel\obj\Debug\Oneteam.ViewModel.dll
+C:\Users\Binoy Renjith\Desktop\Json Support project Demo\OneTeamAptitudeMVC\OneTeamAptitudeMVC\Oneteam.ViewModel\obj\Debug\Oneteam.ViewModel.pdb

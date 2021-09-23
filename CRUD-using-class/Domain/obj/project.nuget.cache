@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "M+5nSHIUbfvZDO2KaoFL4OMJF7OKrgAl79xKCK/B2xeMweWYpL5OTd714yf4qovqqL7oKgjCPlWWx6xhIOX5GQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Binoy Renjith\\Desktop\\Json Support project Demo\\CRUD-using-class\\Domain\\Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Binoy Renjith\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Binoy Renjith\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

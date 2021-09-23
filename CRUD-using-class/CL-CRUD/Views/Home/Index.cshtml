@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<div class="alert alert-success" id="message" style="display:none">
+    <strong>Success!</strong> @TempData["Message"]
+</div>
+<a class="btn btn-primary" href="~/Home/Create">Add</a>
+
+<h3>List</h3>
+<table class="table table-responsive table-bordered">
+    <thead>
+        <tr>
+            <th> ID </th>
+            <th> Name </th>
+            <th>Age</th>
+            <th></th>
+        </tr>
+    </thead>
+    @{ 
+        foreach(Domain.StudentDetails details in ViewBag.List)
+        {
+            <tr>
+                <td>@details.ID</td>
+                <td>@details.Name</td>
+                <td>@details.Age</td>
+                <td><a href="/Home/Edit?id=@details.ID" class="btn btn-primary">Edit</a> </td>
+
+            </tr>
+        }
+    }
+
+</table>
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+      
+        var message =  '@TempData["Message"]';
+        if (message.length > 0) {
+            $("#message").fadeIn(1000).fadeOut(2000);
+        }
+
+        
+
+    });
+</script>
