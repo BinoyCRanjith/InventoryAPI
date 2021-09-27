@@ -33,32 +33,51 @@ namespace OneTeamMain.API.Controllers
         }
 
 
-        //[HttpPost]
-        //[Route("SalesInsert")]
+        [HttpPost]
+        [Route("SalesInsert")]
 
-        //public HttpResponseMessage InsertSales(int Id = 0)
-        //{
-        //    SalesDataAPI SalesDataAPIView = new SalesDataAPI();
-
-        //    setViewBag();
-
-        //    if (Id > 0)
-        //    {
-        //        DbRequestBase request = new DbRequestBase
-        //        {
-        //            InputJson = new { Id }.ToJson(),
-        //            ProcedureName = "SalesDetails",
-        //            RequestType = DbRequestType.Select
-        //        };
-        //        DbRepository dbRepository = new DbRepository();
-        //        var dbResponse = dbRepository.GetResponse<List<SalesDataAPI>>(request);
-        //        SalesDataAPIView = dbResponse.Data;
-        //    }
-        //        return Request.CreateResponse(HttpStatusCode.OK, SalesDataAPIView, "application/json");
+        public HttpResponseMessage InsertSales(int Id = 0)
+        {
             
-        //}
 
 
+
+
+            DbRequestBase request = new DbRequestBase
+            {
+                InputJson = new { Id }.ToJson(),
+                ProcedureName = "SalesDetails",
+                RequestType = DbRequestType.Select
+            };
+            DbRepository dbRepository = new DbRepository();
+            var dbResponse = dbRepository.GetResponse<SalesDataAPI>(request);
+            return Request.CreateResponse(HttpStatusCode.OK, dbResponse, "application/json");
+
+
+
+        }
+
+        [HttpPost]
+        [Route("ProductInsert")]
+        public HttpResponseMessage InsertProductAjax(int Id = 0)
+        {
+            ProductDataAPI ProductDataAPIView = new ProductDataAPI();
+
+            
+            
+                DbRequestBase request = new DbRequestBase
+                {
+                    InputJson = new { Id }.ToJson(),
+                    ProcedureName = "ProductDetails",
+                    RequestType = DbRequestType.Select
+                };
+                DbRepository dbRepository = new DbRepository();
+                var dbResponse = dbRepository.GetResponse<ProductDataAPI>(request);
+                return Request.CreateResponse(HttpStatusCode.OK, dbResponse, "application/json");
+
+            }
+
+         
 
 
 
@@ -67,7 +86,7 @@ namespace OneTeamMain.API.Controllers
         [Route("SaveSales")]
         public HttpResponseMessage Save(SalesDataAPIView SalesDataAPI)
         {
-
+            //
             DbRequestBase request = new DbRequestBase
             {
                 InputJson = SalesDataAPI.ToJson(),
@@ -76,10 +95,14 @@ namespace OneTeamMain.API.Controllers
             };
             DbRepository dbRepository = new DbRepository();
             var dbResponse = dbRepository.GetResponse<List<SalesDataAPIView>>(request);
-            
+
             return Request.CreateResponse(HttpStatusCode.OK, dbResponse, "application/json");
         }
 
+
+
+        [HttpPost]
+        [Route("SalesDelete")]
         public HttpResponseMessage Delete(int Id)
         {
             DbRequestBase request = new DbRequestBase
@@ -95,34 +118,6 @@ namespace OneTeamMain.API.Controllers
         }
 
 
-        public void setViewBag()
-        {
-            DbRequestBase request = new DbRequestBase
-            {
-                InputJson = new { }.ToJson(),
-                ProcedureName = "ShowProduct",
-                RequestType = DbRequestType.Select
-            };
-            DbRepository dbRepository = new DbRepository();
-            var ProductList = dbRepository.GetResponse<List<ProductDataAPI>>(request);
-            ProductList.Data.Insert(0, new ProductDataAPI() { Id = 0, ProductName = "--Select--" });
-
-
-            
-
-            DbRequestBase request1 = new DbRequestBase
-            {
-                InputJson = new { }.ToJson(),
-                ProcedureName = "ShowSubCategoryData",
-                RequestType = DbRequestType.Select
-            };
-
-            var SubCategoryList = dbRepository.GetResponse<List<SubCategoryDataAPI>>(request1);
-            SubCategoryList.Data.Insert(0, new SubCategoryDataAPI() { Id = 0, SubCategoryName = "--Select--" });
-
-
-            
-        }
 
     }
 }

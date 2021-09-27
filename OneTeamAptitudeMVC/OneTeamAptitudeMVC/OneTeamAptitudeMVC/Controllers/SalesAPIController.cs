@@ -31,55 +31,52 @@ namespace OneTeamAptitudeMVC.Controllers
 
 
 
-
         [HttpGet]
 
 
         public ActionResult InsertSales(int Id = 0)
         {
             SalesDataAPI SalesDataAPIView = new SalesDataAPI();
-
             setViewBag();
-
             if (Id > 0)
             {
-                DbRequestBase request = new DbRequestBase
+
+                ApiRequestDTO apiRequest = new ApiRequestDTO()
                 {
-                    InputJson = new { Id }.ToJson(),
-                    ProcedureName = "SalesDetails",
-                    RequestType = DbRequestType.Select
+                    RouteUrl = $"api/Sales/SalesInsert?Id={Id}",
+                    RequestType = (RestSharp.Method)1,//"0->GET,1->POST"
+                    JsonData = null
+
                 };
-                DbRepository dbRepository = new DbRepository();
-                var dbResponse = dbRepository.GetResponse<SalesDataAPI>(request);
-                SalesDataAPIView = dbResponse.Data;
+                var response = ApiServiceSalesShow.ExecuteMyApi<SalesDataAPI>(apiRequest);
+                SalesDataAPIView = response.Data;
+
             }
+
             return View(SalesDataAPIView);
         }
+
 
 
         [HttpGet]
         public ActionResult InsertProductAjax(int Id = 0)
         {
-            ProductDataAPI ProductDataAPIView = new ProductDataAPI();
 
             setViewBag();
-
-            if (Id > 0)
+            ApiRequestDTO apiRequest = new ApiRequestDTO()
             {
-                DbRequestBase request = new DbRequestBase
-                {
-                    InputJson = new { Id }.ToJson(),
-                    ProcedureName = "ProductDetails",
-                    RequestType = DbRequestType.Select
-                };
-                DbRepository dbRepository = new DbRepository();
-                var dbResponse = dbRepository.GetResponse<ProductDataAPI>(request);
-                ProductDataAPIView = dbResponse.Data;
+                RouteUrl = $"api/Sales/ProductInsert?Id={Id}",
+                RequestType = (RestSharp.Method)1,//"0->GET,1->POST"
+                JsonData = null
 
-            }
+            };
+            var response = ApiServiceSalesShow.ExecuteMyApi<ProductDataAPI>(apiRequest);
 
-            return Json(ProductDataAPIView, JsonRequestBehavior.AllowGet);
+            return Json(response.Data, JsonRequestBehavior.AllowGet);
         }
+
+
+
 
 
         [HttpPost]
@@ -99,18 +96,16 @@ namespace OneTeamAptitudeMVC.Controllers
         }
 
 
-
+        
         public ActionResult Delete(int Id)
         {
-            DbRequestBase request = new DbRequestBase
+            ApiRequestDTO apiRequest = new ApiRequestDTO()
             {
-                InputJson = new { Id }.ToJson(),
-                ProcedureName = "DeleteSales",
-                RequestType = DbRequestType.Delete
-
+                RouteUrl = $"api/Sales/SalesDelete?Id={Id}",
+                RequestType = (RestSharp.Method)1,//"0->GET,1->POST"
+                JsonData =  null,
             };
-            DbRepository dbRepository = new DbRepository();
-            var dbResponse = dbRepository.GetResponse<List<SalesDataAPI>>(request);
+            var response = ApiServiceSalesShow.ExecuteMyApi<List<SalesDataAPI>>(apiRequest);
             return RedirectToAction("SalesHomeMain");
         }
 
@@ -131,7 +126,29 @@ namespace OneTeamAptitudeMVC.Controllers
 
             ViewBag.ProductList = ProductList.Data;
 
-            
+            DbRequestBase request1 = new DbRequestBase
+            {
+                InputJson = new { }.ToJson(),
+                ProcedureName = "ShowSubCategoryData",
+                RequestType = DbRequestType.Select
+            };
+
+            var SubCategoryList = dbRepository.GetResponse<List<SubCategoryDataAPI>>(request1);
+            SubCategoryList.Data.Insert(0, new SubCategoryDataAPI() { Id = 0, SubCategoryName = "--Select--" });
+            ViewBag.SubCategoryList = SubCategoryList.Data;
+
+            DbRequestBase request2 = new DbRequestBase
+            {
+                InputJson = new { }.ToJson(),
+                ProcedureName = "ShowCategory",
+                RequestType = DbRequestType.Select
+            };
+
+            var CategoryList = dbRepository.GetResponse<List<CategoryDataAPI>>(request2);
+            CategoryList.Data.Insert(0, new CategoryDataAPI() { Id = 0, CategoryName = "--Select--" });
+            ViewBag.CategoryList = CategoryList.Data;
+
+
         }
 
 

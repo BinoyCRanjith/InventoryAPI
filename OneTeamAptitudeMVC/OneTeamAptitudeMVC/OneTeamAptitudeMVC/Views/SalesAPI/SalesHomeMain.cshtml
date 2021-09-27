@@ -38,13 +38,13 @@
             }
 </style>
 
-<body>
+<body style="background-image: url(https://th.bing.com/th/id/R.12765d5a424b84af44ba036d38222005?rik=8mkevAv0zcfjWQ&riu=http%3a%2f%2fwww.pixelstalk.net%2fwp-content%2fuploads%2f2016%2f06%2fLight-Blue-HD-Backgrounds.jpg&ehk=FhE5dcKmTlQVmZ77p3fm8RZJuH4tJrXJvbP9ZlCciqU%3d&risl=&pid=ImgRaw&r=0); background-repeat: no-repeat ">
 
     <div class="topnav">
         <a class="active" href="http://localhost:50492/AdminHomeAPI/AdminHomeMain">Home</a>
         <a href="http://localhost:50492/SalesAPI/InsertSales">Add New Sales</a>
 
-        
+
     </div>
 
 
@@ -56,6 +56,8 @@
             <tr>
                 <th>Invoice no</th>
                 <th>ProductName</th>
+                <th>CategoryName</th>
+                <th>SubCategoryName</th>
                 
                 <th>SalesQTY</th>
                 
@@ -81,6 +83,12 @@
                     </td>
                     <td>
                         @item.ProductName
+                    </td>
+                    <td>
+                        @item.CategoryName
+                    </td>
+                    <td>
+                        @item.SubCategoryName
                     </td>
                     
                     <td>
