@@ -14,87 +14,7 @@ namespace InventoryAPI.Controllers
 {
     public class ProductController : Controller
     {
-        // GET: Product
-        //public ActionResult ProductHomeMain()
-        //{
-        //    ApiRequestDTO apiRequest = new ApiRequestDTO()
-        //    {
-        //        RouteUrl = "api/Product/ProductHome",
-        //        RequestType = (RestSharp.Method)1,//"0->GET,1->POST"
 
-        //    };
-        //    var response = ApiServiceMain.ExecuteMyApi<List<ProductData>>(apiRequest);
-        //    return View(response.Data);
-        //}
-
-
-        //[HttpGet]
-
-
-        //public ActionResult InsertProduct(int Id = 0)
-        //{
-        //    ProductData ProductDataView = new ProductData();
-
-        //    if (Id > 0)
-        //    {
-
-        //        ApiRequestDTO apiRequest = new ApiRequestDTO()
-        //        {
-        //            RouteUrl = $"api/Product/ProductInsert?Id={Id}",
-        //            RequestType = (RestSharp.Method)1,//"0->GET,1->POST"
-        //            JsonData = null
-
-        //        };
-        //        var response = ApiServiceMain.ExecuteMyApi<ProductData>(apiRequest);
-        //        ProductDataView = response.Data;
-
-        //    }
-
-        //    return View(ProductDataView);
-        //}
-
-
-        //[HttpPost]
-        //public ActionResult Save(ProductDataView ProductData)
-        //{
-
-        //    ApiRequestDTO apiRequest = new ApiRequestDTO()
-        //    {
-        //        RouteUrl = "api/Product/ProductSave",
-        //        RequestType = (RestSharp.Method)1,//"0->GET,1->POST"
-        //        JsonData = ProductData.ToJson()
-
-        //    };
-        //    var response = ApiServiceMain.ExecuteMyApi<List<ProductDataView>>(apiRequest);
-        //    TempData["Message"] = ProductData.Id > 0 ? "Product updated Successfully" : "new Product saved successfully";
-        //    return RedirectToAction("ProductHomeMain");
-        //}
-
-        ////public ActionResult Delete(int Id)
-        ////{
-        ////    DbRequestBase request = new DbRequestBase
-        ////    {
-        ////        InputJson = new { Id }.ToJson(),
-        ////        ProcedureName = "DeleteProduct",
-        ////        RequestType = DbRequestType.Delete
-
-        ////    };
-        ////    DbRepository dbRepository = new DbRepository();
-        ////    var dbResponse = dbRepository.GetResponse<List<ProductData>>(request);
-        ////    return RedirectToAction("ProductHomeMain");
-        ////}
-
-        //public ActionResult Delete(int Id)
-        //{
-        //    ApiRequestDTO apiRequest = new ApiRequestDTO()
-        //    {
-        //        RouteUrl = $"api/Product/ProductDelete?Id={Id}",
-        //        RequestType = (RestSharp.Method)1,//"0->GET,1->POST"
-        //        JsonData = null,
-        //    };
-        //    var response = ApiServiceMain.ExecuteMyApi<List<ProductData>>(apiRequest);
-        //    return RedirectToAction("ProductHomeMain");
-        //}
 
         public ActionResult SalesHomeMain()
         {
@@ -164,7 +84,7 @@ namespace InventoryAPI.Controllers
                 JsonData = SalesData.ToJson()
 
             };
-            var response = ApiServiceMain.ExecuteMyApi<List<SalesData>>(apiRequest);
+            var response = ApiServiceMain.ExecuteMyApi<List<SalesDataView>>(apiRequest);
             TempData["Message"] = SalesData.Id > 0 ? "SalesData updated Successfully" : "new Sales saved successfully";
             return RedirectToAction("SalesHomeMain");
         }
