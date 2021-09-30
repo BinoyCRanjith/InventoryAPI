@@ -1,0 +1,101 @@
+﻿@model InventoryAPI.Models.ProductData
+@using (Html.BeginForm("Save", "Product", FormMethod.Post))
+{
+    @Html.HiddenFor(p => p.Id)
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Mymodal">
+    Launch Modal
+</button>
+    <div class="modal fade" id="Mymodal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        &times;
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h1>Product Updation</h1>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                @Html.Label("CategoryName :")
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-user"></i>
+                                                    </div>
+                                                    @Html.TextBoxFor(Model => Model.CategoryName, new { @class = "form-control", @placeholder = "Type  CategoryName here" })
+
+                                                </div>
+                                                @Html.ValidationMessageFor(p => p.CategoryName, "", new { @class = "text-danger", @required = "", })
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                @Html.Label("SubCategoryName :")
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-user"></i>
+                                                    </div>
+                                                    @Html.TextBoxFor(Model => Model.SubCategoryName, new { @class = "form-control", @placeholder = "Type  SubCategoryName here" })
+
+                                                </div>
+                                                @Html.ValidationMessageFor(p => p.SubCategoryName, "", new { @class = "text-danger", @required = "", })
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                @Html.Label("ProductName :")
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-user"></i>
+                                                    </div>
+                                                    @Html.TextBoxFor(Model => Model.ProductName, new { @class = "form-control", @placeholder = "Type  Product Name here" })
+
+                                                </div>
+                                                @Html.ValidationMessageFor(p => p.ProductName, "", new { @class = "text-danger", @required = "", })
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                @Html.Label("Price :")
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-user"></i>
+                                                    </div>
+                                                    @Html.TextBoxFor(Model => Model.Price, new { @class = "form-control", @placeholder = "Type Price here" })
+
+                                                </div>
+                                                @Html.ValidationMessageFor(p => p.Price, "", new { @class = "text-danger", @required = "", })
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input type="submit" value="submit" class="btn btn-success" style="padding-top:5px;" />
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
