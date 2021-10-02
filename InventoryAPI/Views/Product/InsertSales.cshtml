@@ -17,93 +17,207 @@
                 padding: 5px 10px;
             }
 
-            input {
-                margin: 5px;
-            }
+            
         </style>
     </head>
     <body>
+        
 
-        <h1>PURCHASE DETAILS</h1>
-
-        <form>
-            <fieldset>
-                <legend style="float:right">Billing Details:</legend>
-
-                <div class="col-md-12">
-                    <div class="form-group">
-                        @Html.Label("CustomerName :")
-                        <div class="input-group">
-                            <div class="input-group-addon">
-                                <i class="fa fa-user"></i>
-                            </div>
-                            @Html.TextBoxFor(Model => Model.CustomerName, new { @class = "form-control", @placeholder = "Type CustomerName here" })
-
+        <fieldset>
+            <legend>
+                Purchase Details
+            </legend>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            CustomerName:
+                            @Html.TextBoxFor(Model => Model.CustomerName, new { @class = "form-control", @placeholder = "Enter Customer Name" })
                         </div>
                         @Html.ValidationMessageFor(p => p.CustomerName, "", new { @class = "text-danger", @required = "", })
                     </div>
-                </div>
-
-                <div class="col-md-12">
-                    <div class="form-group">
-                        @Html.Label("InvoiceNo :")
-                        <div class="input-group">
-                            <div class="input-group-addon">
-                                <i class="fa fa-user"></i>
-                            </div>
-                            @Html.TextBoxFor(Model => Model.InvoiceNo, new { @class = "form-control", @placeholder = "Type InvoiceNo here" })
-
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            Invoice Number:
+                            @Html.TextBoxFor(Model => Model.InvoiceNo, new { @class = "form-control", @placeholder = "" })
                         </div>
                         @Html.ValidationMessageFor(p => p.InvoiceNo, "", new { @class = "text-danger", @required = "", })
                     </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="form-group">
-                        @Html.Label("PurchaseDate :")
-                        <div class="input-group">
-                            <div class="input-group-addon">
-                                <i class="fa fa-user"></i>
-                            </div>
-                            @Html.TextBoxFor(Model => Model.PurchaseDate, new { @class = "form-control", @placeholder = "Type PurchaseDate here" })
 
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            Date:
+                            @Html.TextBoxFor(Model => Model.PurchaseDate, new { @class = "form-control", @placeholder = "DD/MM/YYY" })
                         </div>
                         @Html.ValidationMessageFor(p => p.PurchaseDate, "", new { @class = "text-danger", @required = "", })
                     </div>
                 </div>
-
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Mymodal">
-                    Add Items
-                </button>
-
-            </fieldset>
-        </form>
+            </div>
+        </fieldset>
     </body>
+    <br />
 
-
-    <form>
-        <fieldset>
-            <legend style="float:right">CART</legend>
-            <div class="col-md-12">
-                <div class="form-group">
+    <div class="col-md-3">
+        <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#Mymodal">
+            Purchase Products
+        </button>
+    </div>
+    <br />
+    <br />
+    <br />
+    <div class="modal fade" id="Mymodal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        &times;
+                    </button>
+                </div>
+                <div class="modal-body">
                     <div class="row">
-                        <div class="col-sm-6">
-                            <table id="OptionTable" class="table table-striped table-hover table-bordered dt-responsive display" style=" margin-left: 36px !important;">
-                                <thead>
-                                    <tr>
-                                        <th>ProductName</th>
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h1>Purchasing Products</h1>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
 
-                                        <th>Qty</th>
-                                        <th>Price</th>
-                                        <th>TotalPrice</th>
-                                    </tr>
-                                </thead>
-                            </table>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                @Html.Label("InvoiceNo :")
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-user"></i>
+                                                    </div>
+                                                    @Html.TextBoxFor(Model => Model.PInvoiceNo, new { @class = "form-control", @placeholder = "Type InvoiceNo here" })
+                                                </div>
+                                                @Html.ValidationMessageFor(p => p.PInvoiceNo, "", new { @class = "text-danger", @required = "", })
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                @Html.Label("Product :")
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-user"></i>
+                                                    </div>
+                                                    @Html.DropDownListFor(Model => Model.ProductId, new SelectList(ViewBag.ProductList, "Id", "ProductName"), new { @class = "form-control input-lg" })
+                                                </div>
+                                                @Html.ValidationMessageFor(p => p.ProductId, "", new { @class = "text-danger", @required = "", })
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                @Html.Label("Price :")
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-user"></i>
+                                                    </div>
+                                                    @Html.TextBoxFor(Model => Model.Price, new { @class = "form-control", @placeholder = "Type Price here" })
+                                                </div>
+                                                @Html.ValidationMessageFor(p => p.Price, "", new { @class = "text-danger", @required = "", })
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                @Html.Label("Quantity :")
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-user"></i>
+                                                    </div>
+                                                    @Html.TextBoxFor(Model => Model.SalesQTY, new { @class = "form-control", @placeholder = "Type SalesQTY here" })
+                                                </div>
+                                                @Html.ValidationMessageFor(p => p.SalesQTY, "", new { @class = "text-danger", @required = "", })
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                @Html.Label("TotalPrice :")
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-user"></i>
+                                                    </div>
+                                                    @Html.TextBoxFor(Model => Model.TotalPrice, new { @class = "form-control", @placeholder = "Type TotalPrice here" })
+                                                </div>
+                                                @Html.ValidationMessageFor(p => p.TotalPrice, "", new { @class = "text-danger", @required = "", })
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <button type="button"
+                                                        id="updateButton"
+                                                        class="btn btn-danger"
+                                                        onclick="OptionUpdate();">
+                                                    Add to cart
+                                                </button>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
                     </div>
                 </div>
             </div>
-            <div class="col-md-12">
+        </div>
+    </div>
+    <fieldset>
+        <legend>
+            Purchase List
+        </legend>
+        <div class="col-md-12">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table id="OptionTable" class="table table-bordered table-condensed table-striped">
+                           
+                                    <thead>
+                                        <tr>
+                                            <th>Invoice Number</th>
+                                            <th>Product</th>
+
+                                            <th>Price</th>
+
+                                            <th>Quantity</th>
+
+                                            <th>Total Price</th>
+                                        </tr>
+                                    </thead>
+                                    @*<tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>@item.ProductId</td>
+                                                <td>@item.PInvoiceNo</td>
+                                                <td>@item.Price</td>
+                                                <td>@item.SalesQTY</td>
+                                                <td>@item.TotalPrice</td>
+                                                <td><input type="button" value="Remove" onclick="Remove(this)" /></td>
+                                            </tr>
+
+                                        }
+                                    </tbody>*@
+                                
+                            
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <br />
                 <div class="form-group">
                     @Html.Label("GrandTotal :")
                     <div class="input-group">
@@ -115,161 +229,54 @@
                     </div>
                     @Html.ValidationMessageFor(p => p.GrandTotal, "", new { @class = "text-danger", @required = "", })
                 </div>
-            </div>
-        </fieldset>
-    </form>
-
-
-
-
-
-
-
-
-    <div class="modal fade" id="Mymodal" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">
-                        &times;
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <fieldset>
-                            <legend style="float:right">CART</legend>
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <div class="card">
-
-
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        @Html.Label("Product :")
-                                                        <div class="input-group">
-                                                            <div class="input-group-addon">
-                                                                <i class="fa fa-user"></i>
-                                                            </div>
-
-
-                                                            @Html.DropDownListFor(p => p.ProductId, new SelectList(ViewBag.ProductList, "Id", "ProductName"), new { @class = "form-control input-lg" })
-
-                                                        </div>
-                                                        @Html.ValidationMessageFor(p => p.ProductId, "", new { @class = "text-danger", @required = "", })
-                                                    </div>
-                                                </div>
-
-
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        @Html.Label("SalesQTY :")
-                                                        <div class="input-group">
-                                                            <div class="input-group-addon">
-                                                                <i class="fa fa-user"></i>
-                                                            </div>
-                                                            @Html.TextBoxFor(Model => Model.SalesQTY, new { @class = "form-control", @placeholder = "Type SalesQTY here" })
-
-                                                        </div>
-                                                        @Html.ValidationMessageFor(p => p.SalesQTY, "", new { @class = "text-danger", @required = "", })
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        @Html.Label("Price :")
-                                                        <div class="input-group">
-                                                            <div class="input-group-addon">
-                                                                <i class="fa fa-user"></i>
-                                                            </div>
-                                                            @Html.TextBoxFor(Model => Model.Price, new { @class = "form-control", @placeholder = "Price" })
-
-                                                        </div>
-                                                        @Html.ValidationMessageFor(p => p.Price, "", new { @class = "text-danger", @required = "", })
-                                                    </div>
-                                                </div>
-
-
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        @Html.Label("TotalPrice :")
-                                                        <div class="input-group">
-                                                            <div class="input-group-addon">
-                                                                <i class="fa fa-user"></i>
-                                                            </div>
-                                                            @Html.TextBoxFor(Model => Model.TotalPrice, new { @class = "form-control", @placeholder = "Type TotalPrice Here" })
-
-                                                        </div>
-                                                        @Html.ValidationMessageFor(p => p.TotalPrice, "", new { @class = "text-danger", @required = "", })
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <button type="button"
-                                                                id="updateButton"
-                                                                class="btn btn-primary"
-                                                                onclick="OptionUpdate();">
-                                                            Add To Cart
-                                                        </button>
-                                                    </div>
-                                                </div>
-
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </form>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="col-md-12">
+
+
+    </fieldset>
+
+
+   
+    <div class="col-md-6">
         <div class="form-group">
-            <input type="submit" value="Save" class="btn btn-success" />
+            <input type="submit" value="submit" class="btn btn-success btn-lg btn-block" style="padding-top:5px;" />
 
         </div>
     </div>
+
     <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
             integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
             crossorigin="anonymous"></script>
     <script type="text/javascript">
+        debugger;
 
+        //Calculating Total Price Automatically
 
-        //CALCULATION OF TOTAL PRICE
+        $("#SalesQTY, #Price, #TotalPrice").blur(function () {
 
-        $("#SalesQTY,#Price,#TotalPrice").blur(function () {
             var sum = $("#SalesQTY").val() * $("#Price").val();
+
             $("#TotalPrice").val(sum);
-
-        });
-
-        $("#TotalPrice").blur(function () {
-            
-            var sum = alter_array()
-            $("#GrandTotal").val(sum);
-
         });
 
 
+        $("#InvoiceNo").blur(function () {
 
+            var InvoiceNumber = $("#InvoiceNo").val()
 
-        //DATE TIME UPDATION
+            $("#PInvoiceNo").val(InvoiceNumber);
+        });
+        //Calculating the Current Time
+
         $(document).ready(function () {
 
             var date = new Date();
             var val = date.toLocaleDateString() + " " + date.toLocaleTimeString();
-            $("#PurchaseDate").val(val)
+            $("#PurchaseDate").val(val);
         });
 
+        //Auto Fill Price Column
 
-
-        //PRODUCT DETAILS CALLING
-        debugger
         $("#ProductId").change(function () {
 
             $.ajax({
@@ -279,19 +286,15 @@
                 url: "/Product/InsertProductAjax?Id=" + $("#ProductId").val(),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
-                success: function (Response) {
+                success: function (Response,) {
 
                     console.log(Response)
 
                     var Price = Response.Price;
-                    var CategoryName = Response.CategoryName;
-                    var SubCategoryName = Response.SubCategoryName;
-
-                    $("#CategoryName").val(CategoryName)
+                    
+                    
                     $("#Price").val(Price);
-                    $("#SubCategoryName").val(SubCategoryName)
-
-
+                   
                     //    console.log(Response)
 
                 },
@@ -303,31 +306,34 @@
         });
 
 
-        //TABLE DETAILS UPDATION
         function OptionUpdate() {
             if ($("#ProductId").val() != null && $("#ProductId").val() != '') {
                 // Add product to Table
                 OptionAdd();
 
-                // Clear form fields
-                formClear();
 
-                // Focus to product name field
-                $("#ProductId").focus();
             }
         }
         function OptionAdd() {
             debugger;
-            var val = $("#ProductId",).val();
+            var val = $("#PInvoiceNo").val();
+            var val1 = $("#ProductId").val();
+            var val2 = $("#SalesQTY").val();
+            var val3 = $("#Price").val();
+            var val4 = $("#TotalPrice").val();
+
             var htm = '<tr>' +
-                '<td>' + $("#ProductId").val() + '<input type="hidden" name="PurchaseDetailsList[0].ProductId" class="role_array LevelEmail" value="' + val + '"> </td>' +
+                '<td>' + $("#PInvoiceNo").val() + '<input type="hidden" name="PurchaseDetailsList[0].PInvoiceNo" value="' + val + '" class="role_array LevelPInvoiceNo"> </td>' +
+
+                '<td>' + $("#ProductId").val() + '<input type="hidden" name="PurchaseDetailsList[0].ProductId" value="' + val1 + '" class="role_array LevelPProductId"> </td>' +
 
 
-                '<td>' + $("#SalesQTY").val() + '<input type="hidden" name="PurchaseDetailsList[0].SalesQTY"  value="' + val + '"> </td>' +
 
-                '<td>' + $("#Price").val() + '<input type="hidden" name="PurchaseDetailsList[0].Price"  value="' + val + '"> </td>' +
+                '<td>' + $("#SalesQTY").val() + '<input type="hidden" name="PurchaseDetailsList[0].SalesQTY" value="' + val2 + '" class="role_array LevelPSalesQTY"> </td>' +
 
-                '<td>' + $("#TotalPrice").val() + '<input type="hidden" name="PurchaseDetailsList[0].TotalPrice"  value="' + val + '"> </td>' +
+                '<td>' + $("#Price").val() + '<input type="hidden" name="PurchaseDetailsList[0].Price" value="' + val3 + '" class="role_array LevelPPrice"> </td>' +
+
+                '<td>' + $("#TotalPrice").val() + '<input type="hidden" name="PurchaseDetailsList[0].TotalPrice" value="' + val4 + '" class="role_array LevelPTotalPrice"> </td>' +
 
                 "<td>" +
                 "<button type='button' onclick='OptionDelete(this);' class='btn btn-default'>" +
@@ -336,7 +342,6 @@
                 "</td>" +
 
 
-                // "</td>" +"<td>"+$("#Option").val()+"</td>"
 
                 '</tr>';
 
@@ -345,68 +350,75 @@
             }
             $("#OptionTable tbody").append(htm);
 
-            formClear();
 
-            $("#ProductId").focus();
+            alter_array();
+            $("#PInvoiceNo").val('');
+            $("#ProductId").val('');
+            $("#SalesQTY").val('');
+            $("#Price").val('');
+            $("#TotalPrice").val('')
+
 
         }
-        function formClear() {
-            $("#ProductId").val("");
-
-        }
-        function OptionDelete(ctl) {
-            $(ctl).parents("tr").remove();
-        }
-
 
         function alter_array() {
             var array = [];
             var value = 0;
-            jQuery(".LevelEmail").each(function (i, v) {
+            jQuery(".LevelPInvoiceNo").each(function (i, v) {
                 value += $(this).val();
+
+                $(this).attr('name', 'PurchaseDetailsList[' + i + '].PInvoiceNo');
+            });
+            jQuery(".LevelPProductId").each(function (i, v) {
 
                 $(this).attr('name', 'PurchaseDetailsList[' + i + '].ProductId');
             });
+            jQuery(".LevelPSalesQTY").each(function (i, v) {
 
-            jQuery(".EscalationLevel").each(function (i, v) {
-
-                $(this).attr('name', 'SurveyOptions[' + i + '].OptionText');
+                $(this).attr('name', 'PurchaseDetailsList[' + i + '].SalesQTY');
             });
+            jQuery(".LevelPPrice").each(function (i, v) {
 
-            jQuery(".LevelEmai2").each(function (i, v) {
-
-                $(this).attr('name', 'SurveyOptions[' + i + '].OptionText');
+                $(this).attr('name', 'PurchaseDetailsList[' + i + '].Price');
             });
+            jQuery(".LevelPTotalPrice").each(function (i, v) {
 
-            jQuery(".LevelEmai3").each(function (i, v) {
-
-                value += $(this).val();
-
-                $(this).attr('name', 'SurveyOptions[' + i + '].OptionText');
+                $(this).attr('name', 'PurchaseDetailsList[' + i + '].TotalPrice');
             });
-
-
-            jQuery(".TableRow_Indicator").each(function (i, v) {
-
-                $(this).attr('id', 'RowIDLevel1_' + i);
-            });
-            jQuery(".RowIDLevel1").each(function (i, v) {
-
-                $(this).attr('value', i);
-            });
-            jQuery(".RowIDLevel2").each(function (i, v) {
-
-                $(this).attr('value', i);
-            });
-
             return array;
         }
 
+        function OptionDelete(ctl) {
+            $(ctl).parents("tr").remove();
+        }
+        // To Calculate the Grand Total
+
+
+        $(document).ready(function () {
+
+            
+
+                    jQuery(".LevelPTotalPrice").each(function (i, v) {
+
+                        $(this).attr('name', 'PurchaseDetailsList[' + i + '].TotalPrice');
+
+                        total += $(this).val();
+
+                    //$("#TotalPrice").each(function () {
+
+                    //    if (!isNaN(this.value) && this.value.length != 0) {
+
+                    //        total += parseFloat(this.value);
+                    //    }
+                    });
+                    $("#GrandTotal").val(total);
+                
+        });
 
     </script>
 
 
- }
+}
 
 
 

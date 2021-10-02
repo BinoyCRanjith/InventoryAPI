@@ -74,8 +74,8 @@ C:\Users\Binoy Renjith\source\repos\InventoryAPI\InventoryAPI\bin\System.Web.Web
 C:\Users\Binoy Renjith\source\repos\InventoryAPI\InventoryAPI\bin\Newtonsoft.Json.xml
 C:\Users\Binoy Renjith\source\repos\InventoryAPI\InventoryAPI\bin\Antlr3.Runtime.pdb
 C:\Users\Binoy Renjith\source\repos\InventoryAPI\InventoryAPI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Binoy Renjith\source\repos\InventoryAPI\InventoryAPI\obj\Debug\InventoryAPI.csproj.AssemblyReference.cache
 C:\Users\Binoy Renjith\source\repos\InventoryAPI\InventoryAPI\obj\Debug\InventoryAPI.csproj.CoreCompileInputs.cache
 C:\Users\Binoy Renjith\source\repos\InventoryAPI\InventoryAPI\obj\Debug\InventoryAPI.csproj.CopyComplete
 C:\Users\Binoy Renjith\source\repos\InventoryAPI\InventoryAPI\obj\Debug\InventoryAPI.dll
 C:\Users\Binoy Renjith\source\repos\InventoryAPI\InventoryAPI\obj\Debug\InventoryAPI.pdb
+C:\Users\Binoy Renjith\source\repos\InventoryAPI\InventoryAPI\obj\Debug\InventoryAPI.csproj.AssemblyReference.cache

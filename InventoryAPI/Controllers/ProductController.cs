@@ -84,7 +84,7 @@ namespace InventoryAPI.Controllers
                 JsonData = SalesData.ToJson()
 
             };
-            var response = ApiServiceMain.ExecuteMyApi<List<SalesDataView>>(apiRequest);
+            var response = ApiServiceMain.ExecuteMyApi<List<SalesData>>(apiRequest);
             TempData["Message"] = SalesData.Id > 0 ? "SalesData updated Successfully" : "new Sales saved successfully";
             return RedirectToAction("SalesHomeMain");
         }

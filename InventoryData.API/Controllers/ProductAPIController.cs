@@ -83,11 +83,11 @@ namespace InventoryData.API.Controllers
             DbRequestBase request = new DbRequestBase
             {
                 InputJson = SalesData.ToJson(),
-                ProcedureName = "AddSales",
+                ProcedureName = "SalesStore",
                 RequestType = DbRequestType.Insert
             };
             DbRepository dbRepository = new DbRepository();
-            var dbResponse = dbRepository.GetResponse<List<SalesDataView>>(request);
+            var dbResponse = dbRepository.GetResponse<List<SalesData>>(request);
 
             return Request.CreateResponse(HttpStatusCode.OK, dbResponse, "application/json");
         }
