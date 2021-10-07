@@ -41,7 +41,7 @@
 <body style="background-image: url(https://th.bing.com/th/id/R.12765d5a424b84af44ba036d38222005?rik=8mkevAv0zcfjWQ&riu=http%3a%2f%2fwww.pixelstalk.net%2fwp-content%2fuploads%2f2016%2f06%2fLight-Blue-HD-Backgrounds.jpg&ehk=FhE5dcKmTlQVmZ77p3fm8RZJuH4tJrXJvbP9ZlCciqU%3d&risl=&pid=ImgRaw&r=0); background-repeat: no-repeat ">
 
     <div class="topnav">
-        <a class="active" href="https://localhost:44304/Product/ProductHomeMain">Home</a>
+        <a class="active" href="https://localhost:44304/Product/InsertSales">Home</a>
 
 
     </div>
@@ -54,6 +54,7 @@
         <thead>
             <tr>
                 <th>Invoice no</th>
+                <th>CustomerName</th>
                 <th>ProductName</th>
                 
 
@@ -62,11 +63,6 @@
                 <th>Price</th>
                 <th>SalesDate</th>
                 <th>TotalPrice</th>
-
-
-
-
-                <th>Action</th>
 
             </tr>
         </thead>
@@ -78,7 +74,10 @@
             {
                 <tr>
                     <td>
-                        @item.Id
+                        @item.InvoiceNo
+                    </td>
+                    <td>
+                        @item.CustomerName
                     </td>
                     <td>
                         @item.ProductName
@@ -101,28 +100,6 @@
                         @item.TotalPrice
                     </td>
 
-
-
-                    <td>
-                        <div class="btn-group">
-                            <a class="btn btn-azure dropdown-toggle" data-toggle="dropdown">
-                                Actions&nbsp;&nbsp; <i class="fa fa-angle-down"></i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-azure">
-
-                                <li>
-                                    @Html.ActionLink("Edit", "InsertSales", "Product", new { @Id = item.Id }, new { @name = "Edit" })
-
-                                </li>
-                                <li>
-                                    @Html.ActionLink("Disable", "Delete", "Product", new { @Id = item.Id }, new { onclick = "return confirm('Are you sure?');" })
-
-                                </li>
-                            </ul>
-                        </div>
-
-
-                    </td>
                 </tr>
 
             }

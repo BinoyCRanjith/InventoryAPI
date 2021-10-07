@@ -53,6 +53,7 @@ namespace InventoryAPI.Controllers
         {
             SalesData SalesDataView = new SalesData();
             setViewBag();
+            
             if (Id > 0)
             {
 
@@ -103,6 +104,52 @@ namespace InventoryAPI.Controllers
 
 
             ViewBag.ProductList = ProductList.Data;
+
+            DbRequestBase request1 = new DbRequestBase
+            {
+                InputJson = new { }.ToJson(),
+                ProcedureName = "InvoiceNumber",
+                RequestType = DbRequestType.Select
+            };
+
+
+
+
+            ViewBag.InvoiceNumber = dbRepository.GetResponse<SalesData>(request1).Data.InvoiceNo;
         }
+
+
+        //public void setViewBag()
+        //{
+        //    ApiRequestDTO apiRequest = new ApiRequestDTO()
+        //    {
+        //        RouteUrl = "api/Product/ViewBag",
+        //        RequestType = (RestSharp.Method)1,//"0->GET,1->POST"
+
+        //    };
+        //    var response = ApiServiceMain.ExecuteMyApi<List<ProductData>>(apiRequest);
+
+        //    response.Data.Insert(0, new ProductData() { Id = 0, ProductName = "--Select--" });
+        //    ViewBag.ProductList = response.Data;
+
+
+        //}
+
+        //public void setViewBag1()
+        //{
+        //    ApiRequestDTO apiRequest = new ApiRequestDTO()
+        //    {
+        //        RouteUrl = "api/Product/ViewBag1",
+        //        RequestType = (RestSharp.Method)1,//"0->GET,1->POST"
+
+        //    };
+
+
+        //    ViewBag.InvoiceNumber = ApiServiceMain.ExecuteMyApi<SalesData>(apiRequest).Data.InvoiceNo;
+
+
+
+        //}
+
     }
 }

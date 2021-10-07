@@ -91,5 +91,37 @@ namespace InventoryData.API.Controllers
 
             return Request.CreateResponse(HttpStatusCode.OK, dbResponse, "application/json");
         }
+
+        //[HttpPost]
+        //[Route("ViewBag")]
+        //public HttpResponseMessage setViewBag()
+        //{
+        //    DbRequestBase request = new DbRequestBase
+        //    {
+        //        InputJson = new { }.ToJson(),
+        //        ProcedureName = "ShowProduct",
+        //        RequestType = DbRequestType.Select
+        //    };
+        //    DbRepository dbRepository = new DbRepository();
+        //    var dbResponse = dbRepository.GetResponse<List<ProductData>>(request);
+
+            
+
+
+        //    DbRequestBase request1 = new DbRequestBase
+        //    {
+        //        InputJson = new { }.ToJson(),
+        //        ProcedureName = "InvoiceNumber",
+        //        RequestType = DbRequestType.Select
+        //    };
+        //    DbRepository dbRepository1 = new DbRepository();
+        //    var dbResponse1 = dbRepository1.GetResponse<SalesData>(request1).Data.InvoiceNo;
+            
+
+        //    return Request.CreateResponse(HttpStatusCode.OK, dbResponse1, "application/json");
+        //    return Request.CreateResponse(HttpStatusCode.OK, dbResponse, "application/json");
+        //}
+
+
     }
 }

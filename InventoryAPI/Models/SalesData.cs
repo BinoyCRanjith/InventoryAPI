@@ -11,8 +11,9 @@ namespace InventoryAPI.Models
 
         public DateTime PurchaseDate { get; set; }
 
+        [Required(ErrorMessage = "CustomerName Required")]
         public string CustomerName { get; set; }
-
+        [Required(ErrorMessage = "InvoiceNo Required")]
         public int InvoiceNo { get; set; }
 
         public int GrandTotal { get; set; }
@@ -22,7 +23,7 @@ namespace InventoryAPI.Models
 
         public int ProductId { get; set; }
 
-
+        [Required(ErrorMessage = "SalesQTY Required")]
         public string SalesQTY { get; set; }
 
 
@@ -66,6 +67,10 @@ namespace InventoryAPI.Models
 
 
     }
+    public class SalesInvoiceNumber
+    {
+        public int InvoiceNo { get; set; }
+    }
 }
-    
+
 
